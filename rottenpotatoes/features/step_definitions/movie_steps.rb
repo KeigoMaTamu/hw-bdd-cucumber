@@ -9,6 +9,9 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
+When /^I click '(.*)'/ do |button|
+  click_button button
+end
 
 Then /(.*) seed movies should exist/ do | n_seeds |
   expect(Movie.count).to eq n_seeds.to_i
@@ -45,5 +48,4 @@ Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
   rows = page.all('table#movies tbody tr').length
   rows.should eq Movie.count
-  fail "Unimplemented"
 end
